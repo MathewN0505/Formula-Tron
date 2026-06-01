@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>formula_tron</name>
+  <version>1.0.0</version>
+  <description>
+    Formula-Tron: Vision-based autonomous racing for F1TENTH.
+    Control GUI + Lane Following for real car with RealSense camera.
+  </description>
+  
+  <maintainer email="noreply@formulatron.dev">Formula-Tron Team</maintainer>
+  <license>MIT</license>
+
+  <author>McMaster Mechatronics Capstone 2025-2026 - Group 6</author>
+
+  <buildtool_depend>ament_python</buildtool_depend>
+
+  <!-- Core -->
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>nav_msgs</depend>
+  
+  <!-- Ackermann -->
+  <depend>ackermann_msgs</depend>
+  
+  <!-- Vision -->
+  <depend>cv_bridge</depend>
+
+  <!-- Launch -->
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+
+  <!-- Test -->
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+  <test_depend>launch_testing</test_depend>
+  <test_depend>launch_testing_ament_cmake</test_depend>
+
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>
+

@@ -1,0 +1,87 @@
+[tool.pytest.ini_options]
+testpaths = ["formula_tron/test"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+python_classes = ["Test*"]
+addopts = [
+    "-v",
+    "--tb=short",
+    "--strict-markers",
+    "-ra",
+    # Coverage disabled by default - enable with: pytest --cov=formula_tron
+    # (Lower coverage expected on Windows dev machines without full ROS)
+]
+markers = [
+    "unit: Unit tests (fast, no ROS)",
+    "integration: Integration tests (ROS nodes with mocks)",
+    "launch: Launch tests (real ROS launch)",
+    "system: System tests (full integration)",
+    "slow: Slow running tests",
+    "ros: Tests requiring ROS 2",
+    "visual: Visual/image tests",
+]
+# timeout = 10          # requires pytest-timeout
+# timeout_method = "thread"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
+[tool.coverage.run]
+source = ["formula_tron"]
+omit = [
+    "*/test/*",
+    "*/__init__.py",
+    "*/setup.py",
+    "*/fix_line_endings.py",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+precision = 2
+show_missing = true
+skip_covered = false
+# Note: Coverage is lower on dev machines without ROS
+# On the car with full ROS environment, aim for 80%+
+fail_under = 15.0
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = ["E203", "E266", "E501", "W503"]
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".eggs",
+    "*.egg",
+]

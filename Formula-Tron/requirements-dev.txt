@@ -1,0 +1,22 @@
+# Testing Framework
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+pytest-timeout>=2.2.0
+pytest-xdist>=3.5.0
+pytest-ros>=0.5.0
+
+# ROS 2 Launch Testing
+launch-testing>=3.0.0
+launch-testing-ament-cmake>=3.0.0
+
+# Code Quality
+black>=24.0.0
+flake8>=7.0.0
+pre-commit>=3.5.0
+
+# Coverage
+coverage[toml]>=7.4.0
+
+# Mutation Testing (optional, for test quality verification)
+# mutmut>=2.4.0
